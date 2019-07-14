@@ -617,7 +617,7 @@ func TestPack(t *testing.T) {
 		if err != nil {
 			t.Fatalf("%v failed. Unexpected parse error: %v", i, err)
 		}
-		output, err := typ.pack(reflect.ValueOf(test.input))
+		output, err := typ.Pack(reflect.ValueOf(test.input))
 		if err != nil {
 			t.Fatalf("%v failed. Unexpected pack error: %v", i, err)
 		}
@@ -775,7 +775,7 @@ func TestPackNumber(t *testing.T) {
 		{reflect.ValueOf(int64(math.MinInt64)), common.Hex2Bytes("ffffffffffffffffffffffffffffffffffffffffffffffff8000000000000000")},
 	}
 	for i, tt := range tests {
-		packed := packNum(tt.value)
+		packed := PackNum(tt.value)
 		if !bytes.Equal(packed, tt.packed) {
 			t.Errorf("test %d: pack mismatch: have %x, want %x", i, packed, tt.packed)
 		}

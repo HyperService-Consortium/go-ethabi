@@ -24,7 +24,7 @@ import (
 )
 
 // Argument holds the name of the argument and the corresponding type.
-// Types are used when packing and testing arguments.
+// Types are used when Packing and testing arguments.
 type Argument struct {
 	Name    string
 	Type    Type
@@ -312,7 +312,7 @@ func (arguments Arguments) PackValues(args []interface{}) ([]byte, error) {
 
 // Pack performs the operation Go format -> Hexdata
 func (arguments Arguments) Pack(args ...interface{}) ([]byte, error) {
-	// Make sure arguments match up and pack them
+	// Make sure arguments match up and Pack them
 	abiArgs := arguments
 	if len(args) != len(abiArgs) {
 		return nil, fmt.Errorf("argument count mismatch: %d for %d", len(args), len(abiArgs))
@@ -329,15 +329,15 @@ func (arguments Arguments) Pack(args ...interface{}) ([]byte, error) {
 	var ret []byte
 	for i, a := range args {
 		input := abiArgs[i]
-		// pack the input
-		packed, err := input.Type.pack(reflect.ValueOf(a))
+		// Pack the input
+		packed, err := input.Type.Pack(reflect.ValueOf(a))
 		if err != nil {
 			return nil, err
 		}
 		// check for dynamic types
 		if isDynamicType(input.Type) {
 			// set the offset
-			ret = append(ret, packNum(reflect.ValueOf(inputOffset))...)
+			ret = append(ret, PackNum(reflect.ValueOf(inputOffset))...)
 			// calculate next offset
 			inputOffset += len(packed)
 			// append to variable input

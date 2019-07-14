@@ -156,7 +156,7 @@ func TestEventMultiValueWithArrayUnpack(t *testing.T) {
 	var b bytes.Buffer
 	var i uint8 = 1
 	for ; i <= 3; i++ {
-		b.Write(packNum(reflect.ValueOf(i)))
+		b.Write(PackNum(reflect.ValueOf(i)))
 	}
 	var rst testStruct
 	require.NoError(t, abi.Unpack(&rst, "test", b.Bytes()))
@@ -373,16 +373,16 @@ type testCase struct {
 func (tc testCase) encoded(intType, arrayType Type) []byte {
 	var b bytes.Buffer
 	if tc.want.Value1 != nil {
-		val, _ := intType.pack(reflect.ValueOf(tc.want.Value1))
+		val, _ := intType.Pack(reflect.ValueOf(tc.want.Value1))
 		b.Write(val)
 	}
 
 	if !reflect.DeepEqual(tc.want.Values, [2]*big.Int{nil, nil}) {
-		val, _ := arrayType.pack(reflect.ValueOf(tc.want.Values))
+		val, _ := arrayType.Pack(reflect.ValueOf(tc.want.Values))
 		b.Write(val)
 	}
 	if tc.want.Value2 != nil {
-		val, _ := intType.pack(reflect.ValueOf(tc.want.Value2))
+		val, _ := intType.Pack(reflect.ValueOf(tc.want.Value2))
 		b.Write(val)
 	}
 	return b.Bytes()
@@ -398,7 +398,7 @@ func TestEventUnpackIndexed(t *testing.T) {
 	abi, err := JSON(strings.NewReader(definition))
 	require.NoError(t, err)
 	var b bytes.Buffer
-	b.Write(packNum(reflect.ValueOf(uint8(8))))
+	b.Write(PackNum(reflect.ValueOf(uint8(8))))
 	var rst testStruct
 	require.NoError(t, abi.Unpack(&rst, "test", b.Bytes()))
 	require.Equal(t, uint8(0), rst.Value1)
@@ -417,8 +417,8 @@ func TestEventIndexedWithArrayUnpack(t *testing.T) {
 	var b bytes.Buffer
 	stringOut := "abc"
 	// number of fields that will be encoded * 32
-	b.Write(packNum(reflect.ValueOf(32)))
-	b.Write(packNum(reflect.ValueOf(len(stringOut))))
+	b.Write(PackNum(reflect.ValueOf(32)))
+	b.Write(PackNum(reflect.ValueOf(len(stringOut))))
 	b.Write(common.RightPadBytes([]byte(stringOut), 32))
 
 	var rst testStruct

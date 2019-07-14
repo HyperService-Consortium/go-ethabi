@@ -24,21 +24,21 @@ import (
 	"github.com/ethereum/go-ethereum/common/math"
 )
 
-// packBytesSlice packs the given bytes as [L, V] as the canonical representation
+// PackBytesSlice Packs the given bytes as [L, V] as the canonical representation
 // bytes slice
-func packBytesSlice(bytes []byte, l int) []byte {
-	len := packNum(reflect.ValueOf(l))
+func PackBytesSlice(bytes []byte, l int) []byte {
+	len := PackNum(reflect.ValueOf(l))
 	return append(len, common.RightPadBytes(bytes, (l+31)/32*32)...)
 }
 
-// packElement packs the given reflect value according to the abi specification in
+// PackElement Packs the given reflect value according to the abi specification in
 // t.
-func packElement(t Type, reflectValue reflect.Value) []byte {
+func PackElement(t Type, reflectValue reflect.Value) []byte {
 	switch t.T {
 	case IntTy, UintTy:
-		return packNum(reflectValue)
+		return PackNum(reflectValue)
 	case StringTy:
-		return packBytesSlice([]byte(reflectValue.String()), reflectValue.Len())
+		return PackBytesSlice([]byte(reflectValue.String()), reflectValue.Len())
 	case AddressTy:
 		if reflectValue.Kind() == reflect.Array {
 			reflectValue = mustArrayToByteSlice(reflectValue)
@@ -54,7 +54,7 @@ func packElement(t Type, reflectValue reflect.Value) []byte {
 		if reflectValue.Kind() == reflect.Array {
 			reflectValue = mustArrayToByteSlice(reflectValue)
 		}
-		return packBytesSlice(reflectValue.Bytes(), reflectValue.Len())
+		return PackBytesSlice(reflectValue.Bytes(), reflectValue.Len())
 	case FixedBytesTy, FunctionTy:
 		if reflectValue.Kind() == reflect.Array {
 			reflectValue = mustArrayToByteSlice(reflectValue)
@@ -65,8 +65,8 @@ func packElement(t Type, reflectValue reflect.Value) []byte {
 	}
 }
 
-// packNum packs the given number (using the reflect value) and will cast it to appropriate number representation
-func packNum(value reflect.Value) []byte {
+// PackNum Packs the given number (using the reflect value) and will cast it to appropriate number representation
+func PackNum(value reflect.Value) []byte {
 	switch kind := value.Kind(); kind {
 	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
 		return U256(new(big.Int).SetUint64(value.Uint()))
