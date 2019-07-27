@@ -26,8 +26,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/Myriad-Dreamin/go-ethabi/common"
+	"github.com/Myriad-Dreamin/go-ethabi/crypto"
 )
 
 const jsondata = `
@@ -974,7 +974,7 @@ func TestABI_EventById(t *testing.T) {
 		topic := test.event
 		topicID := crypto.Keccak256Hash([]byte(topic))
 
-		event, err := abi.EventByID(topicID)
+		event, err := abi.EventByID(common.Hash(topicID))
 		if err != nil {
 			t.Fatalf("Failed to look up ABI method: %v, test #%d", err, testnum)
 		}
@@ -982,12 +982,12 @@ func TestABI_EventById(t *testing.T) {
 			t.Errorf("We should find a event for topic %s, test #%d", topicID.Hex(), testnum)
 		}
 
-		if event.Id() != topicID {
+		if event.Id() != common.Hash(topicID) {
 			t.Errorf("Event id %s does not match topic %s, test #%d", event.Id().Hex(), topicID.Hex(), testnum)
 		}
 
 		unknowntopicID := crypto.Keccak256Hash([]byte("unknownEvent"))
-		unknownEvent, err := abi.EventByID(unknowntopicID)
+		unknownEvent, err := abi.EventByID(common.Hash(unknowntopicID))
 		if err == nil {
 			t.Errorf("EventByID should return an error if a topic is not found, test #%d", testnum)
 		}

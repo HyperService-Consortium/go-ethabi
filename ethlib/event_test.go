@@ -25,8 +25,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/Myriad-Dreamin/go-ethabi/common"
+	"github.com/Myriad-Dreamin/go-ethabi/crypto"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -91,8 +91,8 @@ func TestEventId(t *testing.T) {
 			{ "type" : "event", "name" : "Check", "inputs": [{ "name" : "t", "type": "address" }, { "name": "b", "type": "uint256" }] }
 			]`,
 			expectations: map[string]common.Hash{
-				"Balance": crypto.Keccak256Hash([]byte("Balance(uint256)")),
-				"Check":   crypto.Keccak256Hash([]byte("Check(address,uint256)")),
+				"Balance": common.Hash(crypto.Keccak256Hash([]byte("Balance(uint256)"))),
+				"Check":   common.Hash(crypto.Keccak256Hash([]byte("Check(address,uint256)"))),
 			},
 		},
 	}
@@ -104,7 +104,7 @@ func TestEventId(t *testing.T) {
 		}
 
 		for name, event := range abi.Events {
-			if event.Id() != test.expectations[name] {
+			if event.Id() != common.Hash(test.expectations[name]) {
 				t.Errorf("expected id to be %x, got %x", test.expectations[name], event.Id())
 			}
 		}
