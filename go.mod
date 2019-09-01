@@ -1,9 +1,9 @@
-module github.com/Myriad-Dreamin/go-ethabi
+module github.com/HyperService-Consortium/go-ethabi
 
 go 1.12
 
 require (
-	github.com/Myriad-Dreamin/go-hexutil v1.0.0
+	github.com/HyperService-Consortium/go-hexutil v1.0.0
 	github.com/aristanetworks/goarista v0.0.0-20190712234253-ed1100a1c015
 	github.com/davecgh/go-spew v1.1.1
 	github.com/kr/pretty v0.1.0 // indirect

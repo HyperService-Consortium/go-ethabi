@@ -21,7 +21,7 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/Myriad-Dreamin/go-ethabi/common/hexutil"
+	"github.com/HyperService-Consortium/go-ethabi/common/hexutil"
 )
 
 // Tests that data bitset encoding and decoding works and is bijective.

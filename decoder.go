@@ -1,7 +1,7 @@
 package ethabi
 
 import (
-	abi "github.com/Myriad-Dreamin/go-ethabi/ethlib"
+	abi "github.com/HyperService-Consortium/go-ethabi/ethlib"
 )
 
 type Decoder struct {

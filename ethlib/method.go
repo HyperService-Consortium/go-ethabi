@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/Myriad-Dreamin/go-ethabi/crypto"
+	"github.com/HyperService-Consortium/go-ethabi/crypto"
 )
 
 // Method represents a callable given a `Name` and whether the method is a constant.

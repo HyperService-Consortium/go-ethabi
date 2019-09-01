@@ -1,5 +1,5 @@
-github.com/Myriad-Dreamin/go-hexutil v1.0.0 h1:dk5E5xS7iLL3xSMkXcNjZS7p2wXNAS14Pmu6qTL7/RM=
-github.com/Myriad-Dreamin/go-hexutil v1.0.0/go.mod h1:dA7CDVx/LjztO02qxAvrdDNDivCdfnAApOBBgprKpnc=
+github.com/HyperService-Consortium/go-hexutil v1.0.0 h1:dk5E5xS7iLL3xSMkXcNjZS7p2wXNAS14Pmu6qTL7/RM=
+github.com/HyperService-Consortium/go-hexutil v1.0.0/go.mod h1:dA7CDVx/LjztO02qxAvrdDNDivCdfnAApOBBgprKpnc=
 github.com/aristanetworks/goarista v0.0.0-20190712234253-ed1100a1c015 h1:7ABPr1+uJdqESAdlVevnc/2FJGiC/K3uMg1JiELeF+0=
 github.com/aristanetworks/goarista v0.0.0-20190712234253-ed1100a1c015/go.mod h1:D/tb0zPVXnP7fmsLZjtdUhSsumbK/ij54UXjjVgMGxQ=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

@@ -20,8 +20,8 @@ import (
 	"math/big"
 	"reflect"
 
-	"github.com/Myriad-Dreamin/go-ethabi/common"
-	"github.com/Myriad-Dreamin/go-ethabi/common/math"
+	"github.com/HyperService-Consortium/go-ethabi/common"
+	"github.com/HyperService-Consortium/go-ethabi/common/math"
 )
 
 // PackBytesSlice Packs the given bytes as [L, V] as the canonical representation

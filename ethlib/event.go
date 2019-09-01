@@ -20,8 +20,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/Myriad-Dreamin/go-ethabi/common"
-	"github.com/Myriad-Dreamin/go-ethabi/crypto"
+	"github.com/HyperService-Consortium/go-ethabi/common"
+	"github.com/HyperService-Consortium/go-ethabi/crypto"
 )
 
 // Event is an event potentially triggered by the EVM's LOG mechanism. The Event

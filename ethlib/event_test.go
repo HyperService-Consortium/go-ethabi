@@ -25,8 +25,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Myriad-Dreamin/go-ethabi/common"
-	"github.com/Myriad-Dreamin/go-ethabi/crypto"
+	"github.com/HyperService-Consortium/go-ethabi/common"
+	"github.com/HyperService-Consortium/go-ethabi/crypto"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
